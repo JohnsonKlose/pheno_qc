@@ -270,48 +270,47 @@ def register(registry, prefix_registry):
     registry["37752:中医表型-中医四诊:身体不轻松或不爽快"] = is_between_1_and_5
     registry["37753:中医表型-中医四诊:闷闷不乐"] = is_between_1_and_5
     registry["37754:中医表型-中医四诊:闷闷不乐"] = is_between_1_and_5
-    registry["37755:中医表型-中医四诊:Aa(收缩期面积)(左手)"] = _is_not_empty
-    registry["37756:中医表型-中医四诊:As(收缩期总面积)(左手)"] = _is_not_empty
-    registry["37757:中医表型-中医四诊:Ab(舒张期面积)(左手)"] = _is_not_empty
-    registry["37758:中医表型-中医四诊:At(脉图总面积)(左手)"] = _is_not_empty
-    registry["37759:中医表型-中医四诊:Ad(舒张期总面积)(左手)"] = _is_not_empty
-    registry["37760:中医表型-中医四诊:W(主波上1/3处宽度)(左手)"] = _is_not_empty
-    registry["37761:中医表型-中医四诊:W/t(主波上(1/3)处宽度/脉搏周期)(左手)"] = _is_not_empty
-    registry["37762:中医表型-中医四诊:alpha(上升角)(左手)"] = _is_not_empty
-    registry["37763:中医表型-中医四诊:h1/t1(主波幅度/升支时间)(左手)(mm/s)"] = _is_not_empty
-    registry["37764:中医表型-中医四诊:h3(重搏前波幅度)(左手)(mm)"] = _is_not_empty
-    registry["37765:中医表型-中医四诊:h3/h1(重搏前波幅度/主波幅度)(左手)"] = _is_not_empty
-    registry["37766:中医表型-中医四诊:h4(降中峡幅度)(左手)(mm)"] = _is_not_empty
-    registry["37767:中医表型-中医四诊:h4/h1(降中峡幅度/主波幅度)(左手)"] = _is_not_empty
-    registry["37768:中医表型-中医四诊:h5(重搏波幅度)(左手)(mm)"] = _is_not_empty
-    registry["37769:中医表型-中医四诊:h5/h1(重搏波幅度/主波幅度)(左手)"] = _is_not_empty
-    registry["37770:中医表型-中医四诊:t(脉波周期)(左手)(s)"] = _is_not_empty
-    registry["37771:中医表型-中医四诊:t1(脉波升支时间)(左手)(s)"] = _is_not_empty
-    registry["37772:中医表型-中医四诊:t2(左手)"] = _is_not_empty
-    registry["37773:中医表型-中医四诊:t4(心缩时间)(左手)(s)"] = _is_not_empty
-    registry["37774:中医表型-中医四诊:t5(缓降时间)(左手)(s)"] = _is_not_empty
-    registry["37775:中医表型-中医四诊:压力值(左手)"] = _is_not_empty
-    registry["37776:中医表型-中医四诊:紧张度(左手)"] = _is_not_empty
-    registry["37777:中医表型-中医四诊:紧张度(左手)"] = _is_not_empty
-    registry["37778:中医表型-中医四诊:脉位(左手)"] = _is_not_empty
-    registry["37779:中医表型-中医四诊:脉位(左手)"] = _is_not_empty
-    registry["37780:中医表型-中医四诊:脉位(左手)"] = _is_not_empty
-    registry["37781:中医表型-中医四诊:脉位(左手)"] = _is_not_empty
-    registry["37782:中医表型-中医四诊:脉力(左手)"] = _is_not_empty
-    registry["37783:中医表型-中医四诊:脉力(左手)"] = _is_not_empty
-    registry["37784:中医表型-中医四诊:脉率(左手)(次/分)"] = _is_not_empty
-    registry["37785:中医表型-中医四诊:脉象-滑涩度(左手)"] = _is_not_empty
-    registry["37786:中医表型-中医四诊:theta(主波角)(左手)"] = _is_not_empty
-    registry["37787:中医表型-中医四诊:脉象-脉名提示(左手)"] = _is_not_empty
-    registry["37788:中医表型-中医四诊:脉象类型(左手)"] = _is_not_empty
-    registry["37789:中医表型-中医四诊:脉象-脉名提示(左手)"] = _is_not_empty
-    registry["37790:中医表型-中医四诊:脉象类型(左手)"] = _is_not_empty
-    registry["37791:中医表型-中医四诊:虚实度(左手)"] = _is_not_empty
-    registry["37792:中医表型-中医四诊:h1(主波波峰幅度)(左手)(mm)"] = _is_not_empty
-    registry["37793:中医表型-中医四诊:局部特征-裂纹、齿痕、点刺、瘀斑"] = _is_not_empty
-    registry["37794:中医表型-中医四诊:局部特征-裂纹、齿痕、点刺、瘀斑"] = _is_not_empty
-    registry["37795:中医表型-中医四诊:局部特征-裂纹、齿痕、点刺、瘀斑"] = _is_not_empty
-    registry["37796:中医表型-中医四诊:局部特征-裂纹、齿痕、点刺、瘀斑"] = _is_not_empty
+    registry["37755:中医表型-中医四诊:Aa(收缩期面积)(左手)"] = is_between_0_and_1000
+    registry["37756:中医表型-中医四诊:As(收缩期总面积)(左手)"] = is_between_0_and_1000
+    registry["37758:中医表型-中医四诊:At(脉图总面积)(左手)"] = is_between_0_and_1000
+    registry["37759:中医表型-中医四诊:Ad(舒张期总面积)(左手)"] = is_between_0_and_1000
+    registry["37760:中医表型-中医四诊:W(主波上1/3处宽度)(左手)"] = is_between_0_and_1000
+    registry["37761:中医表型-中医四诊:W/t(主波上(1/3)处宽度/脉搏周期)(左手)"] = is_between_0_and_1000
+    registry["37762:中医表型-中医四诊:alpha(上升角)(左手)"] = is_between_0_and_1000
+    registry["37763:中医表型-中医四诊:h1/t1(主波幅度/升支时间)(左手)(mm/s)"] = is_between_0_and_1000
+    registry["37764:中医表型-中医四诊:h3(重搏前波幅度)(左手)(mm)"] = is_between_0_and_1000
+    registry["37765:中医表型-中医四诊:h3/h1(重搏前波幅度/主波幅度)(左手)"] = is_between_0_and_1000
+    registry["37766:中医表型-中医四诊:h4(降中峡幅度)(左手)(mm)"] = is_between_0_and_1000
+    registry["37767:中医表型-中医四诊:h4/h1(降中峡幅度/主波幅度)(左手)"] = is_between_0_and_1000
+    registry["37768:中医表型-中医四诊:h5(重搏波幅度)(左手)(mm)"] = is_between_0_and_1000
+    registry["37769:中医表型-中医四诊:h5/h1(重搏波幅度/主波幅度)(左手)"] = is_between_0_and_1000
+    registry["37770:中医表型-中医四诊:t(脉波周期)(左手)(s)"] = is_between_0_and_1000
+    registry["37771:中医表型-中医四诊:t1(脉波升支时间)(左手)(s)"] = is_between_0_and_1000
+    registry["37772:中医表型-中医四诊:t2(左手)"] = is_between_0_and_1000
+    registry["37773:中医表型-中医四诊:t4(心缩时间)(左手)(s)"] = is_between_0_and_1000
+    registry["37774:中医表型-中医四诊:t5(缓降时间)(左手)(s)"] = is_between_0_and_1000
+    registry["37775:中医表型-中医四诊:压力值(左手)"] = is_between_0_and_1000
+    registry["37776:中医表型-中医四诊:紧张度(左手)"] = is_between_0_and_1000
+    registry["37777:中医表型-中医四诊:紧张度(左手)"] = is_between_0_and_1000
+    registry["37778:中医表型-中医四诊:脉位(左手)"] = is_between_0_and_1000
+    registry["37779:中医表型-中医四诊:脉位(左手)"] = is_between_0_and_1000
+    registry["37780:中医表型-中医四诊:脉位(左手)"] = is_between_0_and_1000
+    registry["37781:中医表型-中医四诊:脉位(左手)"] = is_between_0_and_1000
+    registry["37782:中医表型-中医四诊:脉力(左手)"] = is_between_0_and_1000
+    registry["37783:中医表型-中医四诊:脉力(左手)"] = is_between_0_and_1000
+    registry["37784:中医表型-中医四诊:脉率(左手)(次/分)"] = is_between_0_and_1000
+    registry["37785:中医表型-中医四诊:脉象-滑涩度(左手)"] = is_between_0_and_1000
+    registry["37786:中医表型-中医四诊:theta(主波角)(左手)"] = is_between_0_and_1000
+    registry["37787:中医表型-中医四诊:脉象-脉名提示(左手)"] = is_between_0_and_1000
+    registry["37788:中医表型-中医四诊:脉象类型(左手)"] = is_between_0_and_1000
+    registry["37789:中医表型-中医四诊:脉象-脉名提示(左手)"] = is_between_0_and_1000
+    registry["37790:中医表型-中医四诊:脉象类型(左手)"] = is_between_0_and_1000
+    registry["37791:中医表型-中医四诊:虚实度(左手)"] = is_between_0_and_1000
+    registry["37792:中医表型-中医四诊:h1(主波波峰幅度)(左手)(mm)"] = is_between_0_and_1000
+    registry["37793:中医表型-中医四诊:局部特征-裂纹、齿痕、点刺、瘀斑"] = is_between_0_and_1000
+    registry["37794:中医表型-中医四诊:局部特征-裂纹、齿痕、点刺、瘀斑"] = is_between_0_and_1000
+    registry["37795:中医表型-中医四诊:局部特征-裂纹、齿痕、点刺、瘀斑"] = is_between_0_and_1000
+    registry["37796:中医表型-中医四诊:局部特征-裂纹、齿痕、点刺、瘀斑"] = is_between_0_and_1000
     registry["37797:中医表型-中医四诊:舌形"] = _is_not_empty
     registry["37798:中医表型-中医四诊:舌形"] = _is_not_empty
     registry["37799:中医表型-中医四诊:舌形"] = _is_not_empty
@@ -320,17 +319,15 @@ def register(registry, prefix_registry):
     registry["37802:中医表型-中医四诊:阴囊潮湿(男)"] = is_between_1_and_5
 
 
-def _validate_EES_total_score(feature_key, final_value, payload) -> bool:
+def is_between_0_and_1000(feature_key, final_value, payload) -> bool:
     """
-    规则：Epworth嗜睡量表总分，取整数且在 0-24 之间。
-    - 允许字符串数字或数值类型。
-    - 其他情况判异常。
+    判断数值是否在 0-1000（含）之间，接受字符串数字或数值类型。
     """
     try:
-        score = int(final_value)
+        num = int(final_value)
     except (TypeError, ValueError):
         return False
-    return 0 <= score <= 24
+    return 0 <= num <= 1000
 
 def is_between_0_and_21(feature_key, final_value, payload) -> bool:
     """
