@@ -333,19 +333,6 @@ def _is_not_empty(feature_key, final_value, payload) -> bool:
         return bool(final_value.strip())
     return False
 
-def _validate_age(feature_key, final_value, payload) -> bool:
-    """
-    规则：年龄型数值，取整数且在 0-120 岁之间。
-    - 允许字符串数字或数值类型。
-    - 其他情况判异常。
-    """
-    try:
-        age = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= age <= 120
-
-
 def is_yes_no(feature_key, final_value, payload) -> bool:
     """
     判断输入是否为“是”或“否”，用于通用二分类问卷题。
@@ -356,19 +343,6 @@ def is_yes_no(feature_key, final_value, payload) -> bool:
         normalized = final_value.strip().lower()
         return normalized in {"是", "否", "yes", "no"}
     return False
-
-
-def _validate_weekly_coffee_ml(feature_key, final_value, payload) -> bool:
-    """
-    规则：平均每周咖啡量（毫升），接受非负实数，设定上限 0-50000 ml 以滤除明显异常。
-    - 允许字符串数字或数值类型。
-    """
-    try:
-        vol = float(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= vol <= 50000
-
 
 def is_between_1_and_9(feature_key, final_value, payload) -> bool:
     """
