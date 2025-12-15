@@ -271,12 +271,6 @@ def register(registry, prefix_registry):
     registry["4943:睡眠-睡眠问卷:麻木或刺痛"] = _is_not_empty # 不确定分类规则
     registry["4944:睡眠-睡眠问卷:麻木或刺痛"] = _is_not_empty # 不确定分类规则
     registry["4697:睡眠-睡眠问卷:假设因为值夜班,您不得不在清晨4-6点保持清醒,而第二天您没有任何事要处理。以下哪种选择最适合您"] = _is_not_empty # 不确定分类规则
-    # 仅对可能有子字段/补充后缀的题号添加前缀规则，其余保持精确匹配。
-    '''
-    prefix_registry.append(
-        ("3796:健康问卷调查-问卷-1:从多少岁起", _validate_age)
-    )
-    '''
 
 def _validate_EES_total_score(feature_key, final_value, payload) -> bool:
     """

@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 
-SUBSTRING = "心理-心理评测"
+SUBSTRING = "功能表型-肺功能"
 
 
 def load_json(path: Path):
