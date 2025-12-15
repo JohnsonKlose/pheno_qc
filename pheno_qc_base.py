@@ -167,7 +167,7 @@ class PhenoQCBase:
         prefix_registry = []
         for module_info in pkgutil.iter_modules(validators.__path__):
             module = importlib.import_module(f"{validators.__name__}.{module_info.name}")
-            register = getattr(module, "register", None)
+            register = getattr(module, "register", _is_not_empty)
             if callable(register):
                 register(registry, prefix_registry)
         return registry, prefix_registry
