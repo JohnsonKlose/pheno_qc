@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 
-SUBSTRING = "中医表型-中医四诊"
+SUBSTRING = "心理-iPAD"
 
 
 def load_json(path: Path):
@@ -46,5 +46,5 @@ def main(raw_path: str):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        raise SystemExit("Usage: python extract_tcm_registry.py <path-to-json>")
+        raise SystemExit("Usage: python extract_registry.py <path-to-json>")
     main(sys.argv[1])
