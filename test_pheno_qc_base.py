@@ -50,7 +50,7 @@ class PhenoQCBaseTests(unittest.TestCase):
 
     def test_default_check_allows_unregistered_feature(self):
         key = "未注册的特征"
-        payload = {key: make_feature(None)}
+        payload = {key: make_feature(_is_not_empty)}
 
         result = PhenoQCBase(payload).evaluate()
 
