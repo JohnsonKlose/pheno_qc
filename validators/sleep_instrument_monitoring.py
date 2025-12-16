@@ -68,7 +68,7 @@ def register(registry, prefix_registry):
     registry["37210:睡眠-睡眠仪器和监控中心:肢体运动事件-PLM指数-清醒期"] = is_between_0_and_1000
     registry["37211:睡眠-睡眠仪器和监控中心:肢体运动事件-PLM次数-REM睡眠"] = is_between_0_and_1000
     registry["37212:睡眠-睡眠仪器和监控中心:肢体运动事件-PLM次数-清醒期"] = is_between_0_and_1000
-    registry["37213:睡眠-睡眠仪器和监控中心:觉醒次数"] = is_between_0_and_100
+    registry["37213:睡眠-睡眠仪器和监控中心:觉醒次数"] = is_between_0_and_1000
     registry["37214:睡眠-睡眠仪器和监控中心:微觉醒事件-Total-计数-Sleep"] = is_between_0_and_1000
     registry["37215:睡眠-睡眠仪器和监控中心:SpO2与睡眠体位-NREM仰卧-最低SpO2(%)"] = _validate_hundred_scale_score
     registry["37216:睡眠-睡眠仪器和监控中心:SpO2与睡眠体位-NREM非仰卧-最低SpO2(%)"] = _validate_hundred_scale_score
@@ -174,26 +174,6 @@ def is_between_0_and_1000(feature_key, final_value, payload) -> bool:
         return False
     return 0 <= num <= 1000
 
-def is_between_0_and_100(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-100（含）之间，接受字符串数字或数值类型。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 100
-
-def is_between_0_and_10(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-10（含）之间，接受字符串数字或数值类型。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 10
-
 def _validate_hundred_scale_score(feature_key, final_value, payload) -> bool:
     """
     - 范围为0-100之间的浮点数或整数。
@@ -203,67 +183,3 @@ def _validate_hundred_scale_score(feature_key, final_value, payload) -> bool:
     except (TypeError, ValueError):
         return False
     return 0 <= score <= 100
-
-def is_between_1_and_5(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 1-5（含）之间，接受字符串数字或数值类型。
-    用于中医四诊部分问题。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 1 <= num <= 5
-
-def is_between_0_and_63(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-63（含）之间，接受字符串数字或数值类型。
-    用于贝克抑郁量表指数总分验证。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 63
-
-def is_between_0_and_3(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-3（含）之间，接受字符串数字或数值类型。
-    贝克抑郁量表部分题目使用。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 3
-
-def is_between_1_and_9(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 1-9（含）之间，接受字符串数字或数值类型。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 1 <= num <= 9
-
-def is_between_0_and_4(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-4（含）之间，接受字符串数字或数值类型。
-    匹兹堡睡眠质量指数部分题目使用。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 4
-
-def is_natural_number(feature_key, final_value, payload) -> bool:
-    """
-    判断是否为自然数（0,1,2,...），接受字符串数字或数值类型。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return num >= 0

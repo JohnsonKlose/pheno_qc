@@ -125,7 +125,7 @@ def is_between_0_and_1000(feature_key, final_value, payload) -> bool:
     判断数值是否在 0-1000（含）之间，接受字符串数字或数值类型。
     """
     try:
-        num = int(final_value)
+        num = float(final_value)
+        return 0 <= num <= 1000
     except (TypeError, ValueError):
         return False
-    return 0 <= num <= 1000

@@ -327,27 +327,6 @@ def _is_not_empty(feature_key, final_value, payload) -> bool:
         return bool(final_value.strip())
     return False
 
-def is_yes_no(feature_key, final_value, payload) -> bool:
-    """
-    判断输入是否为“是”或“否”，用于通用二分类问卷题。
-    - 接受中文“是/否”（含去除首尾空格）
-    - 宽松接受英文 yes/no（不区分大小写）
-    """
-    if isinstance(final_value, str):
-        normalized = final_value.strip().lower()
-        return normalized in {"是", "否", "yes", "no"}
-    return False
-
-def is_between_1_and_9(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 1-9（含）之间，接受字符串数字或数值类型。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 1 <= num <= 9
-
 def is_between_0_and_4(feature_key, final_value, payload) -> bool:
     """
     判断数值是否在 0-4（含）之间，接受字符串数字或数值类型。

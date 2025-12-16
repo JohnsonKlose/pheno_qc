@@ -329,17 +329,6 @@ def is_between_0_and_1000(feature_key, final_value, payload) -> bool:
         return False
     return 0 <= num <= 1000
 
-def is_between_0_and_21(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-21（含）之间，接受字符串数字或数值类型。
-    用于匹兹堡睡眠质量指数总分验证。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 21
-
 def is_between_1_and_5(feature_key, final_value, payload) -> bool:
     """
     判断数值是否在 1-5（含）之间，接受字符串数字或数值类型。
@@ -351,28 +340,6 @@ def is_between_1_and_5(feature_key, final_value, payload) -> bool:
         return False
     return 1 <= num <= 5
 
-def is_between_0_and_63(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-63（含）之间，接受字符串数字或数值类型。
-    用于贝克抑郁量表指数总分验证。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 63
-
-def is_between_0_and_3(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-3（含）之间，接受字符串数字或数值类型。
-    贝克抑郁量表部分题目使用。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 3
-
 def _is_not_empty(feature_key, final_value, payload) -> bool:
     """
     判断输入是否非空。
@@ -382,75 +349,6 @@ def _is_not_empty(feature_key, final_value, payload) -> bool:
     if isinstance(final_value, str):
         return bool(final_value.strip())
     return False
-
-def _validate_age(feature_key, final_value, payload) -> bool:
-    """
-    规则：年龄型数值，取整数且在 0-120 岁之间。
-    - 允许字符串数字或数值类型。
-    - 其他情况判异常。
-    """
-    try:
-        age = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= age <= 120
-
-
-def is_yes_no(feature_key, final_value, payload) -> bool:
-    """
-    判断输入是否为“是”或“否”，用于通用二分类问卷题。
-    - 接受中文“是/否”（含去除首尾空格）
-    - 宽松接受英文 yes/no（不区分大小写）
-    """
-    if isinstance(final_value, str):
-        normalized = final_value.strip().lower()
-        return normalized in {"是", "否", "yes", "no"}
-    return False
-
-
-def _validate_weekly_coffee_ml(feature_key, final_value, payload) -> bool:
-    """
-    规则：平均每周咖啡量（毫升），接受非负实数，设定上限 0-50000 ml 以滤除明显异常。
-    - 允许字符串数字或数值类型。
-    """
-    try:
-        vol = float(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= vol <= 50000
-
-
-def is_between_1_and_9(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 1-9（含）之间，接受字符串数字或数值类型。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 1 <= num <= 9
-
-def is_between_0_and_4(feature_key, final_value, payload) -> bool:
-    """
-    判断数值是否在 0-4（含）之间，接受字符串数字或数值类型。
-    匹兹堡睡眠质量指数部分题目使用。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return 0 <= num <= 4
-
-def is_natural_number(feature_key, final_value, payload) -> bool:
-    """
-    判断是否为自然数（0,1,2,...），接受字符串数字或数值类型。
-    """
-    try:
-        num = int(final_value)
-    except (TypeError, ValueError):
-        return False
-    return num >= 0
-
 
 def _validate_lab_value(feature_key, final_value, payload) -> bool:
     """验证 Lab 颜色空间值：L ∈ [0,100]，a/b ∈ [-128,127]。"""
