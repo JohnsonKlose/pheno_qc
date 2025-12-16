@@ -11,6 +11,7 @@ env/
 # IDE/project settings
 .idea/
 .vscode/
+.ipynb_checkpoints/
 
 # Test and coverage outputs
 .pytest_cache/
