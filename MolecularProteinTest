@@ -1,0 +1,77 @@
+import unittest
+
+from pheno_qc_base import PhenoQCBase
+
+
+def make_feature(final_value, feature_name="示例特征", description="示例描述"):
+    """构造最小化的 feature payload，用于测试。"""
+    return {
+        "feature_name": feature_name,
+        "metadata": {"description": description},
+        "value_trace": {"final": {"value": final_value}},
+        "processing_context": {"method_name": "单元测试"},
+    }
+
+class MolecularProteinTests(unittest.TestCase):
+    """
+    分子蛋白测试样例：
+      1) 默认阈值：0 ~ 1e5（越界异常）
+      2) 分布异常：对所有蛋白组特征的分布做 Z-score（或 robust Z-score），若 |Z| > 3.5 判异常，但是对单特征无法实现
+    """
+
+    def test_default_bounds_pbmc_and_proteome(self):
+        """测试默认阈值 0~1e5：PBMC / Proteome 都应生效。"""
+        pbmc_key = "11873:分子蛋白质-分子蛋白-PBMC:AACS(外周血单个核细胞)"
+        pre_key = "25342:分子蛋白质-分子蛋白-Proteome:A1BG(血浆)"
+
+        # 正常：范围内
+        result = PhenoQCBase({pbmc_key: make_feature("123.45")}).evaluate()
+        self.assertEqual(result[pbmc_key]["abnormal"], 0)
+
+        result = PhenoQCBase({pre_key: make_feature("99999.99")}).evaluate()
+        self.assertEqual(result[pre_key]["abnormal"], 0)
+
+        # 边界：0 / 1e6
+        result = PhenoQCBase({pbmc_key: make_feature("0")}).evaluate()
+        self.assertEqual(result[pbmc_key]["abnormal"], 0)
+
+        result = PhenoQCBase({pre_key: make_feature("100000")}).evaluate()
+        self.assertEqual(result[pre_key]["abnormal"], 0)
+
+        # 异常：负数
+        result = PhenoQCBase({pbmc_key: make_feature("-0.0001")}).evaluate()
+        self.assertEqual(result[pbmc_key]["abnormal"], 1, "默认阈值下不允许负值")
+
+        # 异常：超过 1e6
+        result = PhenoQCBase({pre_key: make_feature("100000.0001")}).evaluate()
+        self.assertEqual(result[pre_key]["abnormal"], 1, "默认阈值下 >1e6 应异常")
+
+    def test_invalid_value_handling(self):
+        """测试非数值 / NaN / inf / 缺失值应判异常（通常也属于 QC 的必要行为）。"""
+        pbmc_key = "11873:分子蛋白质-分子蛋白-PBMC:AACS(外周血单个核细胞)"
+        pre_key = "25342:分子蛋白质-分子蛋白-Proteome:A1BG(血浆)"
+
+        # 非数值
+        result = PhenoQCBase({pbmc_key: make_feature("not_a_number")}).evaluate()
+        self.assertEqual(result[pbmc_key]["abnormal"], 1)
+
+        # NaN
+        result = PhenoQCBase({pre_key: make_feature("NaN")}).evaluate()
+        self.assertEqual(result[pre_key]["abnormal"], 1)
+
+        # inf / -inf
+        result = PhenoQCBase({pbmc_key: make_feature("inf")}).evaluate()
+        self.assertEqual(result[pbmc_key]["abnormal"], 1)
+
+        result = PhenoQCBase({pre_key: make_feature("-inf")}).evaluate()
+        self.assertEqual(result[pre_key]["abnormal"], 1)
+
+        # 空字符串 / None
+        result = PhenoQCBase({pbmc_key: make_feature("")}).evaluate()
+        self.assertEqual(result[pbmc_key]["abnormal"], 1)
+
+        result = PhenoQCBase({pre_key: make_feature(None)}).evaluate()
+        self.assertEqual(result[pre_key]["abnormal"], 1)
+
+if __name__ == "__main__":
+    unittest.main()
