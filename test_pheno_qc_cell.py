@@ -37,13 +37,13 @@ class PhenoQCBaseTests(unittest.TestCase):
         self.assertEqual(result[key]["abnormal"], 0)
 
 
-    def test_is_nature(self):
+    def test_greater_zero(self):
         key = "3787:人体能量代谢-人体能量代谢:摄氧量(ml/min)"
         payload = {key: make_feature(-1)}
 
         result = PhenoQCBase(payload).evaluate()
 
-        self.assertEqual(result[key]["abnormal"], 0)
+        self.assertEqual(result[key]["abnormal"], 1)
 
 
 if __name__ == "__main__":
