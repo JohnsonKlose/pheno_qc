@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 
-SUBSTRING = "感官-眼科光学相干断层扫描仪"
+SUBSTRING = "感官-耳声发射测试仪"
 
 
 def load_json(path: Path):
