@@ -76,6 +76,7 @@
 }
 """
 
+from  validators.jiang import *
 class PhenoQCBase:
     """
     Pheno QC base class.

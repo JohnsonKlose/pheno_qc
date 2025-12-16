@@ -12,7 +12,6 @@ def make_feature(final_value, feature_name="示例特征", description="示例�
         "processing_context": {"method_name": "单元测试"},
     }
 
-
 class PhenoQCBaseTests(unittest.TestCase):
     def test_exact_age_validator_marks_out_of_range(self):
         valid_key = "3845:健康问卷调查-问卷-1:开始年龄"
